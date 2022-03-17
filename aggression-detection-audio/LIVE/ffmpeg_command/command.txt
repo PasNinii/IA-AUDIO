@@ -1,0 +1,5 @@
+ffmpeg -stream_loop -1 -f mp3 -i "audio_or/output.mp3" -acodec copy -f rtp udp://192.168.1.16:50000 >> command.txt  # 15-20% cpu nextcom
+
+ffmpeg -stream_loop -1 -f mp3 -i "audio_or/output.mp3" -acodec libmp3lame -ab 128k -ac 2 -ar 44100 -f rtp udp://192.168.1.16:50000 # 15-18% cpu nextcom
+
+

@@ -1,0 +1,9 @@
+SDP:
+v=0
+o=- 0 0 IN IP4 127.0.0.1
+s=No Name
+c=IN IP4 192.168.1.10
+t=0 0
+a=tool:libavformat 58.29.100
+m=audio 50000 RTP/AVP 14
+b=AS:0

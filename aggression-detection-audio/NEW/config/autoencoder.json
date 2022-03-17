@@ -1,0 +1,49 @@
+{
+    "name"          :   "Urban Testing",
+    "data"          :   {
+        "type"      :   "SoundManager",
+        "path"      :   "resources",
+        "format"    :   "autoencoder",
+        "loader"    :   {
+            "shuffle"       : true,
+            "batch_size"    : 16,
+            "num_workers"   : 4,
+            "drop_last"     : true
+        }
+    },
+    "transforms"    :   {
+        "type"      :   "AutoencoderTransforms",
+        "args"      :   {
+            "channels"       : "avg"
+        }
+    },
+    "optimizer"     :   {
+        "type"      :   "Adam",
+        "args"      :   {
+            "lr"            : 0.001,
+            "weight_decay"  : 0.01,
+            "amsgrad"       : true
+        }
+    },
+    "lr_scheduler"   :   {
+        "type"      :   "StepLR",
+        "args"      :   {
+            "step_size" : 10,
+            "gamma"     : 0.5
+        }
+    },
+    "model"         :   {
+        "type"      :   "ConvAutoencoderNet"
+    },
+    "train"         :   {
+        "loss"      :   "mse_loss",
+        "epochs"    :   100,
+        "save_dir"  :   "saved_cv/",
+        "save_p"    :   1,
+        "verbosity" :   2,
+        "monitor"   :   "min val_loss",
+        "early_stop":   8,
+        "tbX"       :   true
+    },
+    "metrics"       :   "classification_metrics"
+}
